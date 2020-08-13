@@ -5,10 +5,11 @@ This is my first time using using a web API so I'll be using this readme to docu
 
 **Roadmap with no detail whatsoever:**
 1. Somehow extract commands from the messages in the chat log real time
-1. Use commands to trigger key-events emulated by x360ce xbox controller emulator
-1. Open a game emulator initialized to xbox controller for gameplay
+1. Use commands to trigger key-events ~~emulated by x360ce xbox controller emulator~~
+1. Open a game emulator ~~initialized to xbox controller~~ for gameplay
 
 Strictly speaking, using the xbox controller is unnecessary. 
+In fact, I ended up not using it.
 
 
 Also, I attempted to use pipenv at first, but ran into some issues, so pipenv can be ignored for now.
@@ -73,6 +74,7 @@ In seeing other examples of live plays, apparently Lua Scripting is a common way
 
 ### Useful Links
 
+**For Zoom API**
 - [pipenv](https://docs.python-guide.org/dev/virtualenvs/)
 - [Zoom - Using OAuth 2.0](https://marketplace.zoom.us/docs/guides/auth/oauth)
 - [Zoom Git - OAuth Sample App](https://github.com/zoom/zoom-oauth-sample-app)
@@ -91,6 +93,13 @@ In seeing other examples of live plays, apparently Lua Scripting is a common way
 - [make your own twitch plays](https://www.wituz.com/make-your-own-twitch-plays-stream.html)
 - [Twitch plays pokemon clone](https://github.com/aidanrwt/twitch-plays)
 - [zoom api python wrapper](https://github.com/prschmid/zoomus)
+
+**For Python Web Server**
+- [tecmint "SimpleHTTPServer" Tutorial (deprecated)](https://www.tecmint.com/python-simplehttpserver-to-create-webserver-or-serve-files-instantly/#:~:text=SimpleHTTPServer%20is%20a%20python%20module,you%20have%20python%20interpreter%20installed.)
+- [tutorialspoint Python Networking Programming (deprecated?)](https://www.tutorialspoint.com/python_network_programming/python_http_server.htm)
+- [http.server documentation](https://docs.python.org/3/library/http.server.html#http.server.SimpleHTTPRequestHandler)
+- [afternerd python http.server tutorial](https://www.afternerd.com/blog/python-http-server/)
+- [twisted python web server](https://twistedmatrix.com/documents/current/web/howto/using-twistedweb.html)
 
 **For OCR**
 - [Taking Screenshots with OpenCV and Python](https://www.pyimagesearch.com/2018/01/01/taking-screenshots-with-opencv-and-python/)
