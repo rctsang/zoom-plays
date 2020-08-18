@@ -389,22 +389,23 @@ def main():
 		# messages are stored in order of most recent first and next_page_token doesn't tell us there we left off
 		# so we need to search down the message list until we hit a message that we've seen before (they all have unique ids)
 
-		# first, we'll loop through messages and add each message to a stack until we get to the last seen message
-		cmd_stack = []
-		for message in messages:
-			if message['id'] == last_message_id:
-				# stop if we've seen this message already
-				break
-			cmd_stack.append(message['message'])
+		if last_message_id: # if it's the first get, ignore all past messages
+			# first, we'll loop through messages and add each message to a stack until we get to the last seen message
+			cmd_stack = []
+			for message in messages:
+				if message['id'] == last_message_id:
+					# stop if we've seen this message already
+					break
+				cmd_stack.append(message['message'])
 
-		# then execute the commands from the stack in chronological order
-		while cmd_stack:
-			cmds = finder.find(cmd_stack.pop())
-			for cmd in cmds:
-				# the cmd is a GBACommand object that can self execute, normally void method
-				# if the command is a killswitch, execute() returns 1
-				if cmd.execute():
-					exit()
+			# then execute the commands from the stack in chronological order		
+			while cmd_stack:
+				cmds = finder.find(cmd_stack.pop())
+				for cmd in cmds:
+					# the cmd is a GBACommand object that can self execute, normally void method
+					# if the command is a killswitch, execute() returns 1
+					if cmd.execute():
+						exit()
 
 
 		# Finally, save the id of the last message seen
