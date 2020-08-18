@@ -19,18 +19,54 @@ Ok so in-meeting chat is different from regular chat and cannot easily be access
 (closest thing apparently is to use Zoom WebSDK and access chat features and message log through sessionStorage, but I have 0 experience with web dev)
 
 ## Text from Zoom Chat
-
 Interfacing with the Zoom API relies heavily on the requests module. 
 Basic Zoom Users have an API rate limit of 1 request per second, regardless of load. Need to upgrade for anything faster.
 
 Much of the difficulty here lies in actually getting authorized and proper request formatting. The OAuth 2 authentication flow is extremely tedious, so when reading the [zoom oauth walkthrough](https://marketplace.zoom.us/docs/guides/auth/oauth) you need to pay careful attention to their flow. I will dedicate a subsection to just OAuth to explain it.
 
 ### The OAuth Authorization Flow
-
+I said I'd do this but I'm tired now so I'll document this later. Or take a look at `zoom-plays-gba.py`, which is commented (sort of)
 
 ## Game Interface Notes 
 
 To test the platform, I'll be testing with Pokemon Emerald, since it's something that has been done before and I can compare to.
+
+**GBA Commands**
+```
+up, u 		# d-pad up
+down, d 	# d-pad down
+left, l 	# d-pad left
+right, r 	# d-pad right
+a 			# a button
+b 			# b button
+start 		# start button (not holdable)
+select 		# select button (not holdable)
+ltrig, lt 	# left trigger
+rtrig, rt	# right trigger					
+```
+**GBA Command Formatting**
+```
+(!) (hold button) (+) (press button) (*) (multiplier)
+
+(!) 			# indicates a button should be held
+(hold button) 	# button to be held down
+(+)				# indicates a button will be pressed while holding another button
+(press button)	# button to press
+(*)				# indicates a button will be pressed repeatedly, or held for some amount of time
+(multiplier)	# number (< 500) of times button will be pressed
+				# 	or length of time (< 5) in seconds held if no button is pressed
+
+Note: by default, a button press lasts for 175ms. There's a 25ms gap between button presses
+```
+**Example**
+```
+a 			# press a
+up*25		# press up 25 times
+b+a 		# press a while holding b
+!a 			# hold a (1 second by default)
+!a*5 		# hold a for 5 seconds
+b+up*25 	# press up 25 times while holding b
+```
 
 ### Keystrokes
 

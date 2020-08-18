@@ -97,7 +97,7 @@ class GBACommand:
 				time.sleep(0.175)
 				self.kb.KeyUp(self.cmdMap[self.press])
 
-		if not self.press and self.mul < 5:
+		if not self.press and self.mul <= 5:
 			time.sleep(self.mul)
 
 		if self.hold:
