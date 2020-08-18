@@ -1,4 +1,6 @@
+__pycache__/
 *chatlogs/
 *imgs/
 private/
 zplays/
+server/

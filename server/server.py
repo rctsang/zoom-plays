@@ -2,10 +2,13 @@
 
 import http.server
 import socketserver
+from handler import RedirectHandler
+
+
 
 PORT = 8080
-Handler = http.server.SimpleHTTPRequestHandler
+Handler = RedirectHandler
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print("serving at port", PORT)
-    httpd.serve_forever()
+    httpd.handle_request()
